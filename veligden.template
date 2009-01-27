@@ -11,11 +11,12 @@
 
 <a href="rss.xml" style="font-weight: bold; font-size: 120pt; font-family: Arial, sans-serif; text-decoration: none; color: black;" title="{{ dalie }}">{{ dalie }}</a>
 
-<div style="text-align: right; padding-top:350px"><a style="font-size: 6px; color: #cecece; text-decoration: none;" href="http://www.dalieveligden.mk/ushtekolku" title="А уште колку до Велигден?">a уште колку до Велигден?</a></div>
+<div style="text-align: right; padding-top:350px"><a style="font-size: 6px; color: #cecece; text-decoration: none;" href="ushtekolku" title="А уште колку до Велигден?">a уште колку до Велигден?</a></div>
 
 <!-- Ne e sekoj den Veligden -->
 <!-- http://www.dalieveligden.mk/ushtekolku -->
 <!-- http://www.dalieveligden.mk/media/dalieveligden.tar.gz -->
+<!-- http://www.dalieveligden.mk/katolicki/ -->
 
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

@@ -27,7 +27,7 @@ class MainPage(webapp.RequestHandler):
     global katolicki_datumi
 
     def get(self):
-        if self.request.path=='/katolicki':
+        if self.request.path.startswith('/katolicki'):
             datumi = katolicki_datumi
         else:
             datumi = veligden_datumi
@@ -83,7 +83,7 @@ class UshteKolkuPage(webapp.RequestHandler):
                                                     'denovi':(sledenveligden-deneska).days}))
 
 application = webapp.WSGIApplication([('/', MainPage),
-                                      ('/katolicki',MainPage),
+                                      ('/katolicki/',MainPage),
                                       ('/rss.xml',RssPage),
                                       ('/ushtekolku',UshteKolkuPage),
                                         ],
