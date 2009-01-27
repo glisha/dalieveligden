@@ -13,24 +13,34 @@ veligden_datumi = [datetime.datetime(2009,4,19),datetime.datetime(2010,4,4),
                     datetime.datetime(2017,4,16),datetime.datetime(2018,4,8),
                     datetime.datetime(2019,4,28),datetime.datetime(2020,4,19)]
 
+katolicki_datumi = [datetime.datetime(2009,4,12),datetime.datetime(2010,4,4),
+                    datetime.datetime(2011,4,24),datetime.datetime(2012,4,8),
+                    datetime.datetime(2013,3,31),datetime.datetime(2014,4,20),
+                    datetime.datetime(2015,4,5),datetime.datetime(2016,3,27),
+                    datetime.datetime(2017,4,16),datetime.datetime(2018,4,1),
+                    datetime.datetime(2019,4,21),datetime.datetime(2020,4,12)]
+
 pochetok = datetime.datetime(2008,9,14)
 
 class MainPage(webapp.RequestHandler):
     global veligden_datumi
+    global katolicki_datumi
 
     def get(self):
+        if self.request.path=='/katolicki':
+            datumi = katolicki_datumi
+        else:
+            datumi = veligden_datumi
+
         deneska = datetime.datetime.strptime(
                         datetime.datetime.now().strftime('%d.%m.%Y 00:00:00'),
                         '%d.%m.%Y 00:00:00')
 
         dalie = u'НЕ' # ne e sekoj den veligden
-        if deneska in veligden_datumi:
+        if deneska in datumi:
             dalie = u'ДA, Велигден е!'
 
         self.response.out.write(template.render('veligden.template', {'dalie':dalie}))
-
-class KatolickiMainPage(webapp.RequestHandler):
-    pass
 
 class RssPage(webapp.RequestHandler):
     global veligden_datumi
@@ -73,6 +83,7 @@ class UshteKolkuPage(webapp.RequestHandler):
                                                     'denovi':(sledenveligden-deneska).days}))
 
 application = webapp.WSGIApplication([('/', MainPage),
+                                      ('/katolicki',MainPage),
                                       ('/rss.xml',RssPage),
                                       ('/ushtekolku',UshteKolkuPage),
                                         ],
