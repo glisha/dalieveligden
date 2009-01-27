@@ -7,12 +7,17 @@
   <meta name="author" content="Georgi Stanojevski, glisha@dalieveligden.mk" />
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
-
+<!-- asdad -->
 <body style="text-align: center; padding-top: 200px;">
+
 <a href="rss.xml" style="font-weight: bold; font-size: 120pt; font-family: Arial, sans-serif; text-decoration: none; color: black;" title="{{ dalie }}">{{ dalie }}</a>
 
-<div style="text-align: right"><a style="font-size: 80%; color: #cecece; text-decoration: none;" href="http://www.dalieveligden.mk/ushtekolku">a уште колку до Велигден?</a></div>
+<div style="text-align: right; padding-top:350px"><a style="font-size: 6px; color: #cecece; text-decoration: none;" href="http://www.dalieveligden.mk/ushtekolku" title="А уште колку до Велигден?">a уште колку до Велигден?</a></div>
+
 <!-- Ne e sekoj den Veligden -->
+<!-- http://www.dalieveligden.mk/ushtekolku -->
+<!-- http://www.dalieveligden.mk/media/dalieveligden.tar.gz -->
+
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -21,7 +26,6 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 var pageTracker = _gat._getTracker("UA-5616490-1");
 pageTracker._trackPageview();
 </script>
-<!-- http://www.dalieveligden.mk/media/dalieveligden.tar.gz -->
 </body>
 </html>
 
