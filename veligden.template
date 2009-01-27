@@ -7,7 +7,6 @@
   <meta name="author" content="Georgi Stanojevski, glisha@dalieveligden.mk" />
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
-<!-- asdad -->
 <body style="text-align: center; padding-top: 200px;">
 
 <a href="rss.xml" style="font-weight: bold; font-size: 120pt; font-family: Arial, sans-serif; text-decoration: none; color: black;" title="{{ dalie }}">{{ dalie }}</a>
