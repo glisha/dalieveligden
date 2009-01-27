@@ -44,8 +44,16 @@ class MainPage(webapp.RequestHandler):
 
 class RssPage(webapp.RequestHandler):
     global veligden_datumi
+    global katolicki_datumi
 
     def get(self):
+
+        if self.request.path.startswith('/katolicki'):
+            datumiv = katolicki_datumi
+        else:
+            datumiv = veligden_datumi
+
+
         deneska = datetime.datetime.strptime(
                                 datetime.datetime.now().strftime('%d.%m.%Y 00:00:00'),
                                 '%d.%m.%Y 00:00:00')
@@ -54,7 +62,7 @@ class RssPage(webapp.RequestHandler):
             datum = deneska-datetime.timedelta(i)
 
             dalie=u'НЕ'
-            if datum in veligden_datumi:
+            if datum in datumiv:
                 dalie=u'ДА, Велигден е!'
 
             unikaten = pochetok - datum # da bide unikatno url-to vo rss
@@ -85,6 +93,7 @@ class UshteKolkuPage(webapp.RequestHandler):
 application = webapp.WSGIApplication([('/', MainPage),
                                       ('/katolicki/',MainPage),
                                       ('/rss.xml',RssPage),
+                                      ('/katolicki/rss.xml',RssPage),
                                       ('/ushtekolku',UshteKolkuPage),
                                         ],
                                      debug=True)
