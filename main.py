@@ -73,10 +73,17 @@ class RssPage(webapp.RequestHandler):
 
 class UshteKolkuPage(webapp.RequestHandler):
     global veligden_datumi
+    global katolicki_datumi
 
     def get(self):
         deneska = datetime.datetime.now()
-        a = [x for x in veligden_datumi]
+
+        if self.request.path.startswith('/katolicki'):
+            datumiv = katolicki_datumi
+        else:
+            datumiv = veligden_datumi
+
+        a = [x for x in datumiv]
         a.reverse()
         for redenbroj,veligden in enumerate(a):
             if deneska > veligden:
@@ -95,6 +102,7 @@ application = webapp.WSGIApplication([('/', MainPage),
                                       ('/rss.xml',RssPage),
                                       ('/katolicki/rss.xml',RssPage),
                                       ('/ushtekolku',UshteKolkuPage),
+                                        ('/katolicki/ushtekolku',UshteKolkuPage),
                                         ],
                                      debug=True)
 
