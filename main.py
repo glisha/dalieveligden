@@ -29,6 +29,9 @@ class MainPage(webapp.RequestHandler):
 
         self.response.out.write(template.render('veligden.template', {'dalie':dalie}))
 
+class KatolickiMainPage(webapp.RequestHandler):
+    pass
+
 class RssPage(webapp.RequestHandler):
     global veligden_datumi
 
