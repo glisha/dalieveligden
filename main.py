@@ -4,7 +4,9 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 
+from skopjetz import EuropeSkopje
 import datetime
+
 
 veligden_datumi = [datetime.datetime(2009,4,19),datetime.datetime(2010,4,4),
                     datetime.datetime(2011,4,24),datetime.datetime(2012,4,15),
@@ -22,6 +24,8 @@ katolicki_datumi = [datetime.datetime(2009,4,12),datetime.datetime(2010,4,4),
 
 pochetok = datetime.datetime(2008,9,14)
 
+sktz = EuropeSkopje()
+
 class MainPage(webapp.RequestHandler):
     global veligden_datumi
     global katolicki_datumi
@@ -32,9 +36,8 @@ class MainPage(webapp.RequestHandler):
         else:
             datumi = veligden_datumi
 
-        deneska = datetime.datetime.strptime(
-                        datetime.datetime.now().strftime('%d.%m.%Y 00:00:00'),
-                        '%d.%m.%Y 00:00:00')
+        sega = datetime.datetime.now(sktz)
+        deneska = datetime.datetime(sega.year,sega.month,sega.day,0,0)
 
         dalie = u'НЕ' # ne e sekoj den veligden
         if deneska in datumi:
@@ -53,10 +56,9 @@ class RssPage(webapp.RequestHandler):
         else:
             datumiv = veligden_datumi
 
+        sega = datetime.datetime.now(sktz)
+        deneska = datetime.datetime(sega.year,sega.month,sega.day,0,0)
 
-        deneska = datetime.datetime.strptime(
-                                datetime.datetime.now().strftime('%d.%m.%Y 00:00:00'),
-                                '%d.%m.%Y 00:00:00')
         datumi = []
         for i in range(0,10):
             datum = deneska-datetime.timedelta(i)
@@ -76,7 +78,8 @@ class UshteKolkuPage(webapp.RequestHandler):
     global katolicki_datumi
 
     def get(self):
-        deneska = datetime.datetime.now()
+        sega = datetime.datetime.now(sktz)
+        deneska = datetime.datetime(sega.year,sega.month,sega.day,0,0)
 
         if self.request.path.startswith('/katolicki'):
             datumiv = katolicki_datumi
@@ -92,7 +95,7 @@ class UshteKolkuPage(webapp.RequestHandler):
             else:
                 sledenveligden = a[-1]
 
-        sledenveligdenjs = sledenveligden.strftime('%m/%d/%Y %H:%M AM UTC+0100')
+        sledenveligdenjs = sledenveligden.strftime('%m/%d/%Y %H:%M AM UTC+0200')
         self.response.out.write(template.render('ushtekolku.template',
                                                     {'sledenveligden':sledenveligdenjs,
                                                     'denovi':(sledenveligden-deneska).days}))
