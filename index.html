@@ -7,11 +7,27 @@
 </head>
 <body style="text-align: center; padding-top: 200px;">
 
-<a href="ushtekolku.html" style="font-weight: bold; font-size: 120pt; font-family: Arial, sans-serif; text-decoration: none; color: black;" title="НЕ!">НЕ!</a>
+<a href="ushtekolku.html" style="font-weight: bold; font-size: 120pt; font-family: Arial, sans-serif; text-decoration: none; color: black;" title="НЕ!" id="dalie">НЕ!</a>
 
 <!-- Ne e sekoj den Veligden -->
 <!-- http://www.dalieveligden.mk/ushtekolku.html -->
 <!-- http://github.com/glisha/dalieveligden/tree/master -->
+
+  <script type="text/javascript">
+      Date.prototype.sameDay = function(d) {
+      return this.getFullYear() === d.getFullYear()
+        && this.getDate() === d.getDate()
+        && this.getMonth() === d.getMonth();
+    }
+
+    var TargetDate = new Date("4/19/2020");
+    var CurrentDate = new Date();
+
+    if (CurrentDate.sameDay(TargetDate)) {
+        document.getElementById("dalie").innerHTML = "ДА!";
+        document.getElementById("dalie").title = "ДА! Денеска е Велигден.";
+    }
+  </script>
 
 </body>
 </html>
