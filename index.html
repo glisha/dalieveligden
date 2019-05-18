@@ -4,6 +4,7 @@
   <title>Дали е Велигден?</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="shortcut icon" href="/favicon.ico" />
+  <script src="media/easter.js"></script>
 </head>
 <body style="text-align: center; padding-top: 200px;">
 
@@ -20,8 +21,18 @@
         && this.getMonth() === d.getMonth();
     }
 
-    var TargetDate = new Date("4/19/2020");
+
     var CurrentDate = new Date();
+    var TargetDate;
+    // Determine Target Date
+    if(orthodoxEaster(CurrentDate.getFullYear()) > new Date()){
+      // That's the target date
+      TargetDate = new Date(orthodoxEaster(CurrentDate.getFullYear()))
+    }
+    else{
+      // Next Year is the target
+      TargetDate = new Date(orthodoxEaster(CurrentDate.getFullYear()+1))
+    }
 
     if (CurrentDate.sameDay(TargetDate)) {
         document.getElementById("dalie").innerHTML = "ДА!";

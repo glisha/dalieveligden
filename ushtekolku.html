@@ -10,19 +10,32 @@
     .cntdwn { font-size: 48pt; font-weight: bold; font-family: Arial, sans-serif; text-decoration: none; color: black; }
     .cntdwndiv { font-size: 20pt; font-weight: bold; color: lightgrey; font-family: Arial, sans-serif; text-decoration: none; }
   </style>
+  <script src="media/easter.js"></script>
 </head>
 
 <body style="text-align: center; padding-top: 200px;">
 
 <script language="JavaScript">
-TargetDate = "4/19/2020 00:00 AM UTC+0200";
-BackColor = "white";
-ForeColor = "black";
-CountActive = true;
-CountStepper = -1;
-LeadingZero = false;
-DisplayFormat = "%%D%% дена, %%H%% часа, %%M%% минути, %%S%% секунди.";
-FinishMessage = "Денеска е Велигден.";
+	var CurrentDate = new Date();
+    var	TargetDateRaw;
+    // Determine Target Date
+    if(orthodoxEaster(CurrentDate.getFullYear()) > new Date()){
+      // That's the target date
+      TargetDateRaw = new Date(orthodoxEaster(CurrentDate.getFullYear()))
+    }
+    else{
+      // Next Year is the target
+      TargetDateRaw = new Date(orthodoxEaster(CurrentDate.getFullYear()+1))
+    }
+
+	TargetDate = TargetDateRaw.toUTCString()
+	BackColor = "white";
+	ForeColor = "black";
+	CountActive = true;
+	CountStepper = -1;
+	LeadingZero = false;
+	DisplayFormat = "%%D%% дена, %%H%% часа, %%M%% минути, %%S%% секунди.";
+	FinishMessage = "Денеска е Велигден.";
 </script>
 
 <div class="cntdwndiv">уште<br />
@@ -30,7 +43,7 @@ FinishMessage = "Денеска е Велигден.";
 <br />до следниот Велигден.
 </div>
 
-<br /><a style="font-size: 80%; color: #E2E2E2; text-decoration: none;" href="http://www.dalieveligden.mk/">[ дали е велигден? ]</a>
+<br /><a style="font-size: 80%; color: #E2E2E2; text-decoration: none;" href="/">[ дали е велигден? ]</a>
 
 <!-- Ne e sekoj den Veligden -->
 
