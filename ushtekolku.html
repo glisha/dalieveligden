@@ -16,14 +16,14 @@
 <body style="text-align: center; padding-top: 200px;">
 
 <script language="JavaScript">
-	var CurrentDate = new Date();
+    var CurrentDate = new Date();
     var	TargetDateRaw;
     // Determine Target Date
-    if(orthodoxEaster(CurrentDate.getFullYear()) > new Date()){
+    if(orthodoxEaster(CurrentDate.getFullYear()) > new Date()) {
       // That's the target date
       TargetDateRaw = new Date(orthodoxEaster(CurrentDate.getFullYear()))
     }
-    else{
+    else {
       // Next Year is the target
       TargetDateRaw = new Date(orthodoxEaster(CurrentDate.getFullYear()+1))
     }
