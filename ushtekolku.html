@@ -19,7 +19,7 @@
     var CurrentDate = new Date();
     var	TargetDateRaw;
     // Determine Target Date
-    if(orthodoxEaster(CurrentDate.getFullYear()) > new Date()) {
+    if(new Date(orthodoxEaster(CurrentDate.getFullYear())) > new Date()) {
       // That's the target date
       TargetDateRaw = new Date(orthodoxEaster(CurrentDate.getFullYear()))
     }
